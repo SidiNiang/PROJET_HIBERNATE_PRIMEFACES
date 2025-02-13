@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 13 févr. 2025, 12:47:45 by Hibernate Tools 5.4.33.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="bdbeans.Cours" optimistic-lock="none" schema="public" table="cours">
+        <id name="idcours" type="int">
+            <column name="idcours"/>
+            <generator class="assigned"/>
+        </id>
+        <many-to-one class="bdbeans.Etudiant" fetch="select" name="etudiant">
+            <column name="idpers"/>
+            <column name="idetud"/>
+        </many-to-one>
+        <property name="code" type="string">
+            <column length="254" name="code"/>
+        </property>
+        <property name="nomcours" type="string">
+            <column length="254" name="nomcours"/>
+        </property>
+        <set fetch="select" inverse="true" lazy="true" name="enseignants" table="association_1">
+            <key>
+                <column name="idcours" not-null="true"/>
+            </key>
+            <many-to-many entity-name="bdbeans.Enseignant">
+                <column name="idpers" not-null="true"/>
+                <column name="idens" not-null="true"/>
+            </many-to-many>
+        </set>
+        <set fetch="select" inverse="true" lazy="true" name="classes" table="association_3">
+            <key>
+                <column name="idcours" not-null="true"/>
+            </key>
+            <many-to-many entity-name="bdbeans.Classe">
+                <column name="idclasse" not-null="true"/>
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

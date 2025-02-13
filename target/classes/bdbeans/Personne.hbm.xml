@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 13 févr. 2025, 12:47:45 by Hibernate Tools 5.4.33.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="bdbeans.Personne" optimistic-lock="none" schema="public" table="personne">
+        <id name="idpers" type="int">
+            <column name="idpers"/>
+            <generator class="assigned"/>
+        </id>
+        <property name="prenom" type="string">
+            <column length="254" name="prenom"/>
+        </property>
+        <property name="nom" type="string">
+            <column length="254" name="nom"/>
+        </property>
+        <property name="age" type="java.lang.Integer">
+            <column name="age"/>
+        </property>
+        <property name="adresse" type="string">
+            <column length="254" name="adresse"/>
+        </property>
+        <property name="login" type="string">
+            <column name="login"/>
+        </property>
+        <property name="motdepasse" type="string">
+            <column name="motdepasse"/>
+        </property>
+        <set fetch="select" inverse="true" lazy="true" name="enseignants" table="enseignant">
+            <key>
+                <column name="idpers" not-null="true"/>
+            </key>
+            <one-to-many class="bdbeans.Enseignant"/>
+        </set>
+        <set fetch="select" inverse="true" lazy="true" name="etudiants" table="etudiant">
+            <key>
+                <column name="idpers" not-null="true"/>
+            </key>
+            <one-to-many class="bdbeans.Etudiant"/>
+        </set>
+    </class>
+</hibernate-mapping>

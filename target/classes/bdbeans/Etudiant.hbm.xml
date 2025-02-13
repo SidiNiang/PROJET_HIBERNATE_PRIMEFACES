@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 13 févr. 2025, 12:47:45 by Hibernate Tools 5.4.33.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="bdbeans.Etudiant" optimistic-lock="none" schema="public" table="etudiant">
+        <composite-id class="bdbeans.EtudiantId" name="id">
+            <key-property name="idpers" type="int">
+                <column name="idpers"/>
+            </key-property>
+            <key-property name="idetud" type="int">
+                <column name="idetud"/>
+            </key-property>
+        </composite-id>
+        <many-to-one class="bdbeans.Personne" fetch="select" insert="false" name="personne" update="false">
+            <column name="idpers" not-null="true"/>
+        </many-to-one>
+        <property name="numerocarte" type="string">
+            <column length="254" name="numerocarte"/>
+        </property>
+        <set fetch="select" inverse="true" lazy="true" name="courses" table="cours">
+            <key>
+                <column name="idpers"/>
+                <column name="idetud"/>
+            </key>
+            <one-to-many class="bdbeans.Cours"/>
+        </set>
+    </class>
+</hibernate-mapping>

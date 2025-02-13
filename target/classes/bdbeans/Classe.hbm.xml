@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 13 févr. 2025, 12:47:45 by Hibernate Tools 5.4.33.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="bdbeans.Classe" optimistic-lock="none" schema="public" table="classe">
+        <id name="idclasse" type="int">
+            <column name="idclasse"/>
+            <generator class="assigned"/>
+        </id>
+        <property name="code" type="string">
+            <column length="254" name="code"/>
+        </property>
+        <property name="nom" type="string">
+            <column length="254" name="nom"/>
+        </property>
+        <property name="niveau" type="string">
+            <column length="254" name="niveau"/>
+        </property>
+        <set fetch="select" inverse="false" lazy="true" name="courses" table="association_3">
+            <key>
+                <column name="idclasse" not-null="true"/>
+            </key>
+            <many-to-many entity-name="bdbeans.Cours">
+                <column name="idcours" not-null="true"/>
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>
