@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Page d'accueil</title>
+    <h:outputStylesheet name="primefaces-blitzer.css" library="primefaces-theme"/>
+</h:head>
+
+<h:body>
+    <!-- Affichage des notifications -->
+    <p:growl id="messages" showDetail="true"/>
+
+    <!-- Barre d'en-tête -->
+    <p:toolbar style="margin-bottom: 20px; background-color: #1976D2; color: white;">
+        <p:toolbarGroup>
+            <p:outputLabel value="Bienvenue : #{connexionBean.utilisateur.login}" style="font-weight: bold; font-size: 16px; margin-right: 20px; color: white;"/>
+        </p:toolbarGroup>
+        <p:toolbarGroup align="right">
+            <p:commandButton value="Déconnexion" 
+                             action="#{connexionBean.logout}" 
+                             icon="pi pi-power-off" 
+                             style="background-color: #FF5252; border: none;"/>
+        </p:toolbarGroup>
+    </p:toolbar>
+
+    <!-- Contenu principal -->
+    <p:panel header="Tableau de bord" style="width: 50%; margin: auto;">
+        <h:outputText value="Bienvenue sur l'application de gestion !" style="font-size: 18px;"/>
+    </p:panel>
+</h:body>
+</html>

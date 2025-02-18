@@ -22,10 +22,6 @@ public class Personne implements java.io.Serializable {
 	public Personne() {
 	}
 
-	public Personne(int idpers) {
-		this.idpers = idpers;
-	}
-
 	public Personne(int idpers, String prenom, String nom, Integer age, String adresse, String login, String motdepasse,
 			Set enseignants, Set etudiants) {
 		this.idpers = idpers;
@@ -42,10 +38,11 @@ public class Personne implements java.io.Serializable {
 	public int getIdpers() {
 		return this.idpers;
 	}
-
-	public void setIdpers(int idpers) {
-		this.idpers = idpers;
-	}
+	
+    // Setter pour idpers
+    public void setIdpers(int idpers) {
+        this.idpers = idpers;
+    }
 
 	public String getPrenom() {
 		return this.prenom;

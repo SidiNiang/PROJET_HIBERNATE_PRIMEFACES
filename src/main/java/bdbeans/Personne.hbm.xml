@@ -4,7 +4,7 @@
     <class name="bdbeans.Personne" optimistic-lock="none" schema="public" table="personne">
         <id name="idpers" type="int">
             <column name="idpers"/>
-            <generator class="assigned"/>
+            <generator class="identity"/>
         </id>
         <property name="prenom" type="string">
             <column length="254" name="prenom"/>
